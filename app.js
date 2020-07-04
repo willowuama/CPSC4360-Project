@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const date = require(__dirname + "/date.js");
 
 // Setting up server
 const app = express();
@@ -13,7 +14,7 @@ const port = 3000;
 
 //  Database configuration
 const dbURL = "mongodb://localhost:27017/covidDB"
-mongoos.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // Schemas
 // Admin Schema
@@ -81,4 +82,6 @@ app.route('/register')
 // Launch Server
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
+  //today = date.getDate();
+  //console.log(`Todays date is: ${today}`);
 })
