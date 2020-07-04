@@ -18,16 +18,28 @@ mongoos.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
 // Schemas
 // Admin Schema
 const adminSchema = new Schema({
-  email: String,
-  password: String,
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
   first_name: String,
   last_name: String
 });
 
 // User Schema
 const userSchema = new Schema({
-  email: String,
-  password: String,
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
   first_name: String,
   last_name: String
 });
