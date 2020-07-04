@@ -79,6 +79,12 @@ app.route('/register')
   res.render('register');
 });
 
+// Admin Login Routing
+app.route('/admin')
+.get((req, res) => {
+  res.render('admin');
+});
+
 // Launch Server
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
