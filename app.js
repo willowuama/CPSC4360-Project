@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const date = require(__dirname + "/date.js");
+const https = require("https");
 
 // Setting up server
 const app = express();
@@ -47,7 +48,12 @@ const userSchema = new Schema({
 
 // Report Schema
 const reportSchema = new Schema({
-  title: String
+  date: String,
+  daily_probability: Number,
+  slope: Number,
+  positive: Number,
+  recovered: Number,
+  mutation: Number
 });
 
 // Models
@@ -58,8 +64,18 @@ const Admin = new mongoose.model('Admin', adminSchema)
 const User = new mongoose.model('User', userSchema)
 
 // Report Model
+const Report = new mongoose.model('Report', reportSchema)
 
-// Test Data
+// Creating an admin
+
+/*
+const newAdmin = new Admin({
+  email: "admin@admin.com",
+  password: "adminpassword",
+  first_name: "Corona",
+  last_name: 'Virus'
+});
+*/
 
 // Home Routing
 app.route('/')
@@ -121,7 +137,35 @@ app.route('/register')
 // Admin Login Routing
 app.route('/admin')
 .get((req, res) => {
+  //newAdmin.save(); //Used to save our initial admin
   res.render('admin');
+})
+.post((req, res) =>{
+  const username = req.body.username;
+  const password = req.body.password;
+
+  Admin.findOne({email: username}, (err, foundUser) => {
+    if(err){
+      console.log(err);
+      res.redirect('/admin');
+    }else{
+      if(foundUser){
+        if(foundUser.password === password){
+          res.redirect('/adminpage');
+        }else{
+          res.redirect('/admin')
+        }
+      }else{
+        res.redirect('/admin')
+      }
+    }
+  })
+});
+
+// Admin Page Routing
+app.route('/adminpage')
+.get((req, res) => {
+  res.render('adminpage');
 });
 
 // Report Routing
