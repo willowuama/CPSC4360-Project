@@ -19,16 +19,28 @@
 </nav>
 
 <div class="container-fluid" id="title">
-  <h1>Reports</h1>
+  <h1><%= report.date %></h1>
 </div>
 
-
-  <div class="container-fluid">
-    <ul>
-      <% reportList.forEach(function(r){ %>
-      <li><a href="/report/<%= r._id %>"><%= r.date %></a></li>
-      <% }) %>
-    </ul>
-  </div>
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">Probability</th>
+      <td><%= report.daily_probability %></td>
+    </tr>
+    <tr>
+      <th scope="row">Slope</th>
+      <td><%= report.slope %></td>
+    </tr>
+    <tr>
+      <th scope="row">Positive Case</th>
+      <td><%= report.positive %></td>
+    </tr>
+    <tr>
+      <th scope="row">Recovered</th>
+      <td><%= report.recovered %></td>
+    </tr>
+  </tbody>
+</table>
 
 <%- include('partials/footer') %>

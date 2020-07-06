@@ -1,6 +1,35 @@
 <%- include('partials/header') %>
 
-<h1>COVID NEWS</h1>
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a class="navbar-brand" href="/report">Reports</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div class="collapse navbar-collapse" id="navbarsExample02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/news">News <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Logout <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid" id="title">
+  <h1>News Articles</h1>
+</div>
+
+
+  <div class="container-fluid">
+    <ul>
+      <% newsList.forEach(function(n){ %>
+      <li><a href="<%= n.url %>" target="
+        "><%= n.url %></a></li>
+      <% }) %>
+    </ul>
+  </div>
 
 <%- include('partials/footer') %>

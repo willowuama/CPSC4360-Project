@@ -22,7 +22,7 @@
 </nav>
 
 <div class="container mt-5">
-  <h1>Create New Report</h1>
+  <h1>Add News</h1>
 
   <div class="row">
     <div class="col-sm-8">
@@ -30,12 +30,12 @@
         <div class="card-body">
 
           <!-- Makes POST request to /login route -->
-          <form action="/createreport" method="POST">
+          <form action="/addnews" method="POST">
             <div class="form-group">
-              <label for="mutation">Mutation</label>
-              <input type="text" class="form-control" name="mutation">
+              <label for="mutation">Article Link</label>
+              <input type="text" class="form-control" name="news">
             </div>
-            <button type="submit" class="btn btn-dark">Create</button>
+            <button type="submit" class="btn btn-dark">Add</button>
           </form>
 
         </div>

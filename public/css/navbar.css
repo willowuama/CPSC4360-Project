@@ -1,0 +1,15 @@
+body {
+  padding-bottom: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+ }
+
+#title {
+  padding-bottom: 50px;
+}
