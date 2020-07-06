@@ -260,7 +260,7 @@ app.route('/addnews')
 // News route
 app.route('/news')
 .get((req, res) => {
-  Report.find({}, (err, foundItems) => {
+  News.find({}, (err, foundItems) => {
     res.render('news', {newsList: foundItems})
   });
 });
